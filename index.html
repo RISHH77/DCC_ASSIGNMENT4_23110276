@@ -1,0 +1,183 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <form method="POST" action = '/a_1'>
+            <select name="selected_column">
+                {% for column in columns %}
+                <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+            <label>Search a value:</label>
+            <input name="value" type="text" id="movie_genre">
+            <button type="submit">Submit</button>
+        </form>
+        <h2>Choose the company whos purchases you want to see: </h2>
+        <form method="POST" action = '/q21'>
+            <select name="buyer">
+                {% for company in companies %}
+                <option value="{{ company }}">{{ company }}</option>
+                {% endfor %}
+            </select>
+                <button type="submit">Submit</button>
+        </form>
+        <h2>Choose the party whos encashments you want to see: </h2>
+        <form method="POST" action = '/q31'>
+            <select name="party">
+                {% for party in parties %}
+                <option value="{{ party }}">{{ party }}</option>
+                {% endfor %}
+            </select>
+                <button type="submit">Submit</button>
+        </form>
+        <h2>Choose the party whos donations you want to see: </h2>
+        <form method="POST" action = '/q41'>
+            
+            <select name="party">
+                {% for party in parties %}
+                <option value="{{ party }}">{{ party }}</option>
+                {% endfor %}
+            </select>
+                <button type="submit">Submit</button>
+        </form>
+        
+        <br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <h1>Select a column:</h1>
+        <form action="/column" method="post">
+            <select name="column">
+                {% for column in columns %}
+                <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+    
+        {% if column  %}
+            <h2>Enter a value for column: {{ column }}</h2>
+            <form action="/enter_value" method="post">
+                <label for="value">Value:</label>
+                <input type="text" id="value" name="value" required>
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %} -->
+        <!-- <form method="post" action="/a_1">
+            <label>Search details by bond number:</label>
+            <input name="box" type="text" id="Bond Number">
+            <input id="a_1" type="submit">
+        </form>
+        {% if a_1_data %}
+        {{ a_1_data }}
+        {% endif %}
+        <br><br>
+
+        <form method="post" action="/a_2">
+            <label>Search a Movie by Genre:</label>
+            <input name="box" type="text" id="movie_by_genre">
+            <input id="a_2" type="submit">
+        </form>
+        {% if a_2_data%}
+        {% for item in a_2_data %}
+        <p>{{ item[0] }}</p>
+        {% endfor %}
+        {% endif %}
+
+        <br><br>
+
+        <form method="post" action="/a_3">
+            <label>Search a Movie by Director:</label>
+            <input name="box" type="text" id="movie_by_director">
+            <input id="a_3" type="submit">
+        </form>
+        
+        {% if a_3_data%}
+        {% for item in a_3_data %}
+        <p>{{ item[0] }}</p>
+        {% endfor %}
+        {% endif %}
+
+
+        <br><br>
+        
+        <form method="post" action="/a_4">
+            <label>Search a Movies of Director:</label>
+            <input name = "box" type="text" id="movie_of_director">
+            <input id="a_4" type="submit" value="Submit">
+        </form>
+
+        {% if a_4_data%}
+        {% for item in a_4_data %}
+        <p>{{ item[0] }}</p>
+        {% endfor %}
+        {% endif %}        
+
+        <br><br>
+        
+
+        <label>Search a Movies Rating:</label>
+        <input type="text" id="movie_rating">
+        <input id="a_5" type="submit" value="Submit"><br><br> -->
+
+
+        <script>
+        //            <!-- <h1>Select a column:</h1>
+        // <form action="/submit" method="post">
+        //     <select name="column">
+        //         {% for column in columns %}
+        //         <option value="{{ column }}">{{ column }}</option>
+        //         {% endfor %}
+        //     </select>
+        //     <input type="submit" value="Submit">
+        // </form> --> 
+        </script>
+    </body>
+
+</html>

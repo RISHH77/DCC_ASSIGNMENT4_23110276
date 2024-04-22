@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    {% if data_a1 %}
+        {{ data_a1 }}
+    {% endif %}
+    {% if money %}
+        {{ money }}
+        {{ year }}
+        <p>Total of {{count[0][0]}} bonds were purchased</p>
+    {% endif %}
+    {% if encashed %}
+        {{ encashed }}
+        {{ year }}
+        <p>Total of {{count[0][0]}} bonds were encashed</p>
+    {% endif %}
+    {% if money %}
+    <div id="bar-graph"></div>
+
+    <script>
+        var data = JSON.parse('{{ data | tojson | safe }}');
+        var labels = data['labels'];
+        var values = data['values'];
+        var trace = {
+            x: labels,
+            y: values,
+            type: 'bar'
+        };
+        var layout = {
+            title: 'Amount Donated per Year',
+            xaxis: { title: 'Year (20XX)' },
+            yaxis: { title: 'Amount Donated in Rs' }
+        };
+        Plotly.newPlot('bar-graph', [trace], layout);
+    </script>
+    {% endif %}
+    
+    {% if encashed %}
+    <div id="bar-graph"></div>
+
+    <script>
+        var data = JSON.parse('{{ data | tojson | safe }}');
+        var labels = data['labels'];
+        var values = data['values'];
+        var trace = {
+            x: labels,
+            y: values,
+            type: 'bar'
+        };
+        var layout = {
+            title: 'Amount Encashed per Year',
+            xaxis: { title: 'Year (20XX)' },
+            yaxis: { title: 'Amount Encashed in Rs' }
+        };
+        Plotly.newPlot('bar-graph', [trace], layout);
+    </script>
+    {% endif %}
+    {% if person %}
+        <p>A total of {{total}} rupees was donated.</p>
+        {{ person }}
+    {% endif %}
+</body>
+</html>
