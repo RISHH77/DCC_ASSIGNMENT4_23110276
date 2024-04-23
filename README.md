@@ -4,10 +4,11 @@ Installation
 
 1. Create a database title electoralbonds in sql server
 2. Here import the tables purchased.csv and encashed.csv
-3. Use visual studio code and open new.py, first.html and index.html
-4. install flask using pip install Flask Flask-MySQLdb
-5. Change your password on new.py to your server password
-6. Open the website that runs in your output terminal
+3. Use visual studio code and open new.py, and a folder named templates
+4. In the folder templates, add index.html and first.html
+5. install flask using pip install Flask Flask-MySQLdb
+6. Change your password on new.py to your server password
+7. Open the website that runs in your output terminal
 
 Screenshots of the answers
 
