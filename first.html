@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+</head>
+<body>
+    {% if data_a1 %}
+        {{ data_a1 }}
+    {% endif %}
+    {% if data_a2 %}
+        {{ data_a2 }}
+    {% endif %}
+    {% if money %}
+        {{ money }}
+        {{ year }}
+        <p>Total of {{count[0][0]}} bonds were purchased</p>
+    {% endif %}
+    {% if encashed %}
+        {{ encashed }}
+        {{ year }}
+        <p>Total of {{count[0][0]}} bonds were encashed</p>
+    {% endif %}
+    {% if money %}
+    <div id="bar-graph"></div>
+<button id="download-btn">Download Plot</button>
+
+<script>
+    var data = JSON.parse('{{ data | tojson | safe }}');
+    var labels = data['labels'];
+    var values = data['values'];
+    var trace = {
+        x: labels,
+        y: values,
+        type: 'bar'
+    };
+    var layout = {
+        title: 'Amount Donated per Year',
+        xaxis: { title: 'Year (20XX)' },
+        yaxis: { title: 'Amount Donated in Rs' },
+        updatemenus: [{
+            x: 0.5,
+            y: 1.15,
+            xref: 'paper',
+            yref: 'paper',
+            showactive: false,
+            type: 'buttons',
+            buttons: [{
+                label: 'Download Plot',
+                method: 'downloadImage',
+                args: [
+                    {
+                        filename: 'plot',
+                        format: 'png' 
+                    }
+                ]
+            }]
+        }]
+    };
+    Plotly.newPlot('bar-graph', [trace], layout);
+    document.getElementById('download-btn').addEventListener('click', function() {
+    Plotly.downloadImage('bar-graph', {format: 'png', filename: 'bar_chart'})})
+</script>
+
+    {% endif %}
+    
+    {% if encashed %}
+    <div id="bar-graph"></div>
+<button id="download-btn">Download Plot</button>
+
+<script>
+    var data = JSON.parse('{{ data | tojson | safe }}');
+    var labels = data['labels'];
+    var values = data['values'];
+    var trace = {
+        x: labels,
+        y: values,
+        type: 'bar'
+    };
+    var layout = {
+        title: 'Amount Encashed per Year',
+        xaxis: { title: 'Year (20XX)' },
+        yaxis: { title: 'Amount Encashed in Rs' },
+        updatemenus: [{
+            x: 0.5,
+            y: 1.15,
+            xref: 'paper',
+            yref: 'paper',
+            showactive: false,
+            type: 'buttons',
+            buttons: [{
+                label: 'Download Plot',
+                method: 'downloadImage',
+                args: [
+                    {
+                        filename: 'plot',
+                        format: 'png'
+                    }
+                ]
+            }]
+        }]
+    };
+    Plotly.newPlot('bar-graph', [trace], layout);
+    document.getElementById('download-btn').addEventListener('click', function() {
+        Plotly.downloadImage('bar-graph', {format: 'png', filename: 'bar_chart'})});
+</script>
+
+    {% endif %}
+    {% if person %}
+        <p>A total of {{total}} rupees was donated.</p>
+        {{ person }}
+    {% endif %}
+    {% if party %}
+        <p>A total of {{total}} rupees was donated.</p>
+        {{ party }}
+    {% endif %}
+    {% if party_values %}
+    <div id="pie-chart"></div>
+<button id="download-btn">Download Pie Chart</button>
+
+<script>
+    var data = JSON.parse('{{ party_values | tojson | safe }}'); // Assuming data is provided in your Jinja2 template
+    var labels = JSON.parse('{{ labels | tojson | safe }}'); // Assuming labels is provided in your Jinja2 template
+
+    var trace = {
+        labels: labels,
+        values: data,
+        type: 'pie'
+    };
+
+    var layout = {
+        title: 'Distribution of Expenses',
+    };
+
+    Plotly.newPlot('pie-chart', [trace], layout);
+    document.getElementById('download-btn').addEventListener('click', function() {
+        Plotly.downloadImage('pie-chart', {format: 'png', filename: 'pie_chart'});
+    });
+</script>
+
+
+    {% endif %}
+
+
+    
+</body>
+</html>
